@@ -1,6 +1,6 @@
 # RAdamScheduleFreeは素晴らしいぞ！
 
-![](assets/eye-catch.png)
+![](https://raw.githubusercontent.com/yKesamaru/scheduleFree_optimizer/refs/heads/master/assets/eye-catch.png)
 
 ## はじめに
 みなさん、[全ての学習率スケジューリングを過去にするOptimizer](https://zenn.dev/dena/articles/6f04641801b387#fnref-5928-10)という素晴らしい記事をご覧になったでしょうか？
@@ -22,17 +22,17 @@ https://github.com/facebookresearch/schedule_free/tree/main
 ![AdamW + CosineAnnealingLR](https://raw.githubusercontent.com/yKesamaru/Building_a_face_recognition_model_using_Siamese_Network/refs/heads/master/assets/2024-12-14-10-20-53.png)
 *AdamW + CosineAnnealingLR*
 
-![RAdamScheduleFree](assets/2024-12-21-09-15-04.png)
+![RAdamScheduleFree](https://raw.githubusercontent.com/yKesamaru/scheduleFree_optimizer/refs/heads/master/assets/2024-12-21-09-15-04.png)
 *RAdamScheduleFree*
 
 そして、保存されたそれぞれの学習済みモデルの評価（ここではAUCスコア・ROC曲線のみ）は以下のとおりです。
 
 **AdamW + CosineAnnealingLRが63エポック**時の学習済みモデルに対し、**RAdamScheduleFreeがたった1エポック**時の学習済みモデルであるところも注目ポイントです。
 
-![AdamW+CosineAnnealingLR 63epoch](assets/AdamW+CosineAnnealingLR.png)
+![AdamW+CosineAnnealingLR 63epoch](https://raw.githubusercontent.com/yKesamaru/scheduleFree_optimizer/refs/heads/master/assets/AdamW+CosineAnnealingLR.png)
 *AdamW+CosineAnnealingLR 63epoch*
 
-![RAdamScheduleFree 1epoch](assets/RAdamScheduleFree.png)
+![RAdamScheduleFree 1epoch](https://raw.githubusercontent.com/yKesamaru/scheduleFree_optimizer/refs/heads/master/assets/RAdamScheduleFree.png)
 *RAdamScheduleFree 1epoch*
 
 素晴らしいと思いませんか！？
@@ -67,11 +67,11 @@ Graphics:
 ```
 
 ## 試す前のお気持ち
-わたしはオプティマイザやスケジューラの理論的背景に詳しくありません。こうなると振動するんだなぁ、とか、周期的に変動させるのね、くらいの理解にとどまります。新しいアイデアだよ！パンパカパーン！ってのを論文解説サイトで鼻ほじりながら斜め読みしてる生活をしています。
+わたしはオプティマイザやスケジューラの理論的背景に詳しくありません。こうなると振動するんだなぁ、とか、周期的に変動させるのね、くらいの浅〜い理解にとどまります。新しいアイデアだよ！パンパカパーン！ってのを論文解説サイトで鼻ほじりながら斜め読みしてる生活をしています。
 
-美麗な売り文句とは裏腹に、実際試してみると一向に収束しなかったり、長い時間かけて収束するんだけどモデル性能が悪かったり…なんですよね。昔、損失関数だったかな？のサーベイ論文で、「みんな色々論文出してるけど評価盛り過ぎだよね！」的なことが書いてあって。
+美麗な売り文句とは裏腹に、実際試してみると一向に収束しなかったり、長い時間かけて収束するんだけどモデル性能が悪かったり…なんですよね。昔、損失関数だったかな？のサーベイ論文で、「みんな色々論文出してるけど評価盛り過ぎだよね！」的なことが書いてあって。マジかよけしからんな、と思いました。
 
-ただ[The Road Less Scheduled](https://arxiv.org/pdf/2405.15682)を見ると、ImageNet ResNet-50で良い成績を出しているんですね。しかもわたしがよく使うAdamWとの比較実験もありました。画像分類モデルに関しては自信ありげに感じました。
+ただ[The Road Less Scheduled](https://arxiv.org/pdf/2405.15682)を見ると、ImageNet ResNet-50で良い成績を出しているんですね。しかもわたしがよく使うAdamWとの比較実験もありました。少なくともCNNベースの画像分類モデルに関しては自信ありげに感じました。
 
 ちょうど記事作成用に学習用コードを動かしていたので、「変更点が少ないなら触ってみようかな」的なノリで試そうと思った次第です。
 
@@ -498,7 +498,7 @@ if __name__ == "__main__":
 Computing Embeddings: 100%|███████████████████████████████████████████████████████████████████████████████████████████████| 34283/34283 [14:34<00:00, 39.19it/s]
 ```
 
-![](assets/2024-12-21-09-05-06.png)
+![](https://raw.githubusercontent.com/yKesamaru/scheduleFree_optimizer/refs/heads/master/assets/2024-12-21-09-05-06.png)
 
 続いてAPスコア・PR曲線を見ていきましょう。
 
@@ -650,10 +650,12 @@ if __name__ == "__main__":
 Computing Embeddings: 100%|███████████████████████████████████████████████████████████████████████████████████████████████| 34283/34283 [11:18<00:00, 50.55it/s]
 ```
 
-![](assets/APScore.png)
+![](https://raw.githubusercontent.com/yKesamaru/scheduleFree_optimizer/refs/heads/master/assets/APScore.png)
+
+AUCスコア・APスコアとも評価としては良くないですが、AdamW + CosineAnnealingLRで60エポック以上かけて学習した成績と同様の結果を、たかだか10エポック程度で出してくれたところを評価してください。
 
 ## さいごに
 すくなくともオープンセット分類においてCNNベースなら、RAdamScheduleFreeは鉄板だと感じました。いや、本当にこれからはこれ使います。はまなすなぎさ様ありがとうございます。「ScheduleFree のお気持ちを理解する」の途中から「だんだん異星人の言語になってきたな…」とか考えててすいませんでした。
-うちは貧しくてViTとか実験できないので、画像関連のすべての領域でRAdamScheduleFreeが良い体験をもたらしてくれるかは不明なのですが。だれかお金持ちの方、勤め先の機器でいたずら出来る方、いろいろ試していただけると面白いな、と思いました。
+うちは貧しくてViTとか実験できないので、画像関連のすべての領域でRAdamScheduleFreeが良い体験をもたらしてくれるかは不明です。だれかお金持ちの方、勤め先の機器でいたずら出来る方、いろいろ試していただいて、結果を共有していただけるとありがたいです。
 
 以上です。ありがとうございました。
